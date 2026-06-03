@@ -1,0 +1,106 @@
+## 数据库表结构说明
+
+### Categories（产品类别）
+- CategoryID: 类别ID
+- CategoryName: 类别名称，如 Beverages（饮料）、Condiments（调味品）、Confections（糖果）、Dairy Products（乳制品）、Grains/Cereals（谷物）、Meat/Poultry（肉禽）、Produce（农产品）、Seafood（海鲜）
+- Description: 类别描述
+
+### Customers（客户）
+- CustomerID: 客户ID
+- CompanyName: 公司名称
+- ContactName: 联系人姓名
+- Country: 国家
+- City: 城市
+
+### Employees（员工）
+- EmployeeID: 员工ID
+- FirstName/LastName: 名字/姓氏
+- Title: 职位
+- HireDate: 入职日期
+
+### Orders（订单）
+- OrderID: 订单ID
+- CustomerID: 客户ID（关联Customers表）
+- EmployeeID: 负责员工ID（关联Employees表）
+- OrderDate: 下单日期
+- ShippedDate: 发货日期
+- ShipCountry: 收货国家
+
+### Order Details（订单明细）
+- OrderID: 订单ID
+- ProductID: 产品ID
+- UnitPrice: 单价
+- Quantity: 数量
+- Discount: 折扣（0到1之间）
+- 实际金额：UnitPrice * Quantity * (1 - Discount)
+
+### Products（产品）
+- ProductID: 产品ID
+- ProductName: 产品名称
+- CategoryID: 类别ID
+- UnitPrice: 单价
+- UnitsInStock: 库存数量
+- Discontinued: 是否停产（1=停产，0=在售）
+
+## 业务基准指标（基于历史数据统计）
+
+### 月度销售额基准
+- 正常范围：280万 ～ 390万
+- 月均销售额：约330万
+- 低于280万：偏低，需关注
+- 超过390万：偏高，属于旺季或促销效果显著
+- 历史最低月：207万（业务初期）
+- 历史最高月：438万
+
+### 月度订单量基准
+- 正常范围：95 ～ 155单/月
+- 月均订单量：约120单
+- 低于95单：订单量偏少，需关注客户流失
+- 超过155单：订单量旺盛，通常伴随营销活动
+
+### 各产品类别销售表现
+- Beverages（饮料）：历史总销售额最高，约9200万，是核心品类，客单价约969
+- Confections（糖果）：销售额约6600万，订单量大但客单价较低（645）
+- Meat/Poultry（肉禽）：客单价最高（1371），总额约6500万，属于高价值品类
+- Dairy Products（乳制品）：总额约5800万，客单价732，销售稳定
+- Condiments（调味品）：总额约5600万，客单价587，属于高频低价品类
+- Seafood（海鲜）：总额约5000万，客单价526，销售量大但单价低
+- Produce（农产品）：总额约3300万，属于销售额偏低品类，需重点关注
+- Grains/Cereals（谷物）：历史总销售额最低，约2900万，客单价516，属于弱势品类
+
+### 各国销售基准
+- 美国（USA）：最大市场，总销售额约6400万，是第一大市场
+- 德国（Germany）：第二大市场，约5900万
+- 法国（France）：第三大市场，约4900万
+- 巴西（Brazil）：第四大市场，约4600万
+- 英国（UK）：第五大市场，约3600万
+- 墨西哥、委内瑞拉、西班牙：中等市场，销售额1900万～2500万
+- 低于1500万的国家属于弱势市场
+
+### 季节性规律
+- Q1（1-3月）：销售额通常偏低，尤其2月是全年低谷，Q1月均约320万
+- Q2（4-6月）：销售额平稳回升，Q2月均约330万
+- Q3（7-9月）：销售额中等偏上，7月通常有所回升，Q3月均约330万
+- Q4（10-12月）：年末旺季，12月通常是全年销售高峰，Q4月均约345万
+- 规律：2月通常为全年最低月，7月和12月通常为区域高点
+
+### 产品层面基准
+- 头部产品（Top10）贡献约40%的总销售额
+- 平均折扣率约5%，超过15%折扣属于高促销力度
+- 库存低于10件视为低库存预警
+- 停产产品（Discontinued=1）不应计入在售分析
+
+## 异常判断规则
+- 月销售额环比下降超过20%：异常下滑，需排查原因
+- 月销售额环比上升超过30%：异常增长，关注是否促销或季节性因素
+- 某品类销售额低于历史均值50%：该品类出现问题
+- 单笔订单金额超过5万：大客户订单，属正常但需关注
+- 折扣超过20%且销量未明显提升：促销效果差
+
+## 常见查询场景
+- 查某国家/城市销售：通过Orders.ShipCountry/ShipCity过滤
+- 查时间段销售：通过Orders.OrderDate过滤，格式YYYY-MM-DD
+- 查品类销售：通过Categories.CategoryName关联
+- 查员工业绩：通过Orders.EmployeeID关联Employees
+- 数据时间范围：最早2012年7月，最新2023年10月
+- 查询时间时注意使用正确年份范围（2012-2023），不要用1996-1998

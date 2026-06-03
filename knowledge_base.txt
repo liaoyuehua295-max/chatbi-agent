@@ -1,0 +1,124 @@
+## 数据库表结构说明
+
+### hospitals（医院）
+- hospital_id: 医院ID
+- name: 医院名称
+- level: 医院等级，值为 三甲 / 二甲 / 一甲
+- province: 省份
+- city: 城市
+
+### diseases（疾病分类）
+- disease_id: 疾病ID
+- name: 疾病名称，如肺癌、白血病、脑梗塞等
+- department: 科室，如肿瘤科、心内科、儿科、肾内科、骨科等
+- category: 疾病大类，值为 癌症 / 心脑血管 / 肾病 / 外伤 / 罕见病 / 慢性病 / 儿童疾病 / 呼吸系统 / 职业病
+- visit_type: 就诊类型，值为 门诊 / 住院
+
+### campaigns（筹款项目）
+- campaign_id: 项目ID
+- patient_name: 患者姓名
+- age: 患者年龄
+- gender: 性别，值为 男 / 女
+- province: 患者所在省份
+- city: 患者所在城市
+- hospital_id: 就诊医院ID（关联hospitals表）
+- disease_id: 疾病ID（关联diseases表）
+- target_amount: 目标筹款金额（元）
+- raised_amount: 实际已筹金额（元）
+- donor_count: 捐款人数
+- created_at: 项目发起时间（YYYY-MM-DD）
+- deadline: 截止日期（YYYY-MM-DD）
+- status: 项目状态，值为 筹款中 / 已完成 / 已关闭
+
+### donations（捐款记录）
+- donation_id: 捐款ID
+- campaign_id: 项目ID（关联campaigns表）
+- amount: 捐款金额（元）
+- donated_at: 捐款时间（YYYY-MM-DD HH:MM:SS）
+- channel: 捐款渠道，值为 微信 / APP / H5
+- is_anonymous: 是否匿名，1=匿名 0=非匿名
+
+### withdrawals（提现记录）
+- withdrawal_id: 提现ID
+- campaign_id: 项目ID（关联campaigns表）
+- amount: 提现金额（元）
+- applied_at: 申请时间（YYYY-MM-DD）
+- reviewed_at: 审核完成时间（YYYY-MM-DD，处理中时为空）
+- status: 审核状态，值为 通过 / 拒绝 / 处理中
+
+## 业务基准指标
+
+### 筹款项目基准
+- 数据时间范围：2022年1月 至 2024年6月
+- 项目总数：5000个
+- 完成率（已完成/总项目）：约30%
+- 平均目标金额：约7万元
+- 平均已筹金额：约5万元
+- 平均捐款人数：约120人/项目
+- 癌症类目标金额最高（5-20万），儿童疾病次之（2-8万）
+
+### 捐款基准
+- 总捐款记录：约21万条
+- 平均单笔捐款：约200元
+- 微信渠道占比最高（约50%），APP次之（约33%），H5最少（约17%）
+- 匿名捐款比例约30%
+
+### 提现基准
+- 提现审核通过率约90%
+- 平均审核周期：1-7天
+- 拒绝率约5%，处理中约5%
+- 提现金额 = 已筹金额 × 99%（平台收取1%手续费）
+
+### 疾病分布
+- 癌症类筹款项目数量最多，占比约35%
+- 心脑血管疾病次之，约20%
+- 儿童疾病筹款达成率最高（社会关注度高）
+- 罕见病目标金额最大，但达成率偏低
+
+### 地域分布
+- 广东、北京、上海、浙江、江苏为筹款大省
+- 四川、湖北、湖南、河南为中部筹款大省
+- 三甲医院项目占比约60%
+
+### regions（大区）
+- region_id: 大区ID
+- name: 大区名称，值为 华北大区 / 华南大区 / 华东大区 / 华中大区 / 西南大区 / 西北大区
+
+### teams（小组）
+- team_id: 小组ID
+- region_id: 所属大区ID（关联regions表）
+- name: 小组名称，如"北京1组"、"广州2组"
+
+### staff（员工）
+- staff_id: 员工ID
+- name: 员工姓名
+- team_id: 所属小组ID（关联teams表）
+- title: 职位，值为 组长 / 专员
+- hired_at: 入职日期
+
+### campaigns表新增字段
+- staff_id: 负责该项目的员工ID（关联staff表）
+
+## 团队KPI基准
+- 全公司共6个大区，33个小组，约195名员工
+- 每个小组4-8人，含1名组长
+- 员工KPI核心指标：负责项目数、项目筹款总额、项目达成率
+- 组长考核：团队整体达成率、人均筹款额
+- 大区排名按筹款总额计算
+
+## 常用计算方式
+- 达成率 = raised_amount / target_amount × 100%
+- 人均捐款 = raised_amount / donor_count
+- 审核周期（天）= julianday(reviewed_at) - julianday(applied_at)
+- 月度筹款额 = SUM(raised_amount)，按 strftime('%Y-%m', created_at) 分组
+- 员工业绩 = 关联 campaigns.staff_id → staff → teams → regions
+- 团队查询需要 JOIN：campaigns → staff → teams → regions
+
+## 常见查询场景
+- 各省/城市筹款金额和项目数
+- 各疾病大类/科室的筹款情况
+- 三甲 vs 二甲医院筹款对比
+- 按渠道统计捐款金额和人数
+- 提现审核通过率和平均周期
+- 门诊 vs 住院筹款对比
+- 月度/季度筹款趋势
