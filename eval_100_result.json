@@ -1,0 +1,807 @@
+{
+  "total": 100,
+  "no_retry_rate": 19.0,
+  "retry_rate": 100.0,
+  "details": [
+    {
+      "id": 1,
+      "level": "简单",
+      "question": "campaigns表一共有多少条记录",
+      "no_retry": true,
+      "with_retry": true,
+      "msg": "SELECT COUNT(*) AS record_count FROM campaigns;"
+    },
+    {
+      "id": 2,
+      "level": "简单",
+      "question": "男性患者有多少人",
+      "no_retry": true,
+      "with_retry": true,
+      "msg": "SELECT COUNT(*) AS male_count FROM campaigns WHERE gender = "
+    },
+    {
+      "id": 3,
+      "level": "简单",
+      "question": "女性患者有多少人",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 4,
+      "level": "简单",
+      "question": "筹款状态为completed的项目有多少",
+      "no_retry": true,
+      "with_retry": true,
+      "msg": "SELECT COUNT(*) AS count FROM campaigns WHERE status = '已完成'"
+    },
+    {
+      "id": 5,
+      "level": "简单",
+      "question": "筹款状态为active的项目有多少",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "含错误关键词:不存在"
+    },
+    {
+      "id": 6,
+      "level": "简单",
+      "question": "筹款状态为closed的项目有多少",
+      "no_retry": true,
+      "with_retry": true,
+      "msg": "SELECT COUNT(*) AS count FROM campaigns WHERE status = '已关闭'"
+    },
+    {
+      "id": 7,
+      "level": "简单",
+      "question": "广东省有多少个筹款项目",
+      "no_retry": true,
+      "with_retry": true,
+      "msg": "SELECT COUNT(*) AS count FROM campaigns WHERE province = '广东"
+    },
+    {
+      "id": 8,
+      "level": "简单",
+      "question": "北京市有多少个筹款项目",
+      "no_retry": true,
+      "with_retry": true,
+      "msg": "SELECT COUNT(*) AS count FROM campaigns WHERE province = '北京"
+    },
+    {
+      "id": 9,
+      "level": "简单",
+      "question": "donations表共有多少条捐款记录",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 10,
+      "level": "简单",
+      "question": "微信渠道的捐款有多少条",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 11,
+      "level": "简单",
+      "question": "支付宝渠道的捐款有多少条",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "含错误关键词:不存在"
+    },
+    {
+      "id": 12,
+      "level": "简单",
+      "question": "匿名捐款有多少条",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 13,
+      "level": "简单",
+      "question": "withdrawals表共有多少条记录",
+      "no_retry": true,
+      "with_retry": true,
+      "msg": "SELECT COUNT(*) AS total_withdrawals FROM withdrawals;"
+    },
+    {
+      "id": 14,
+      "level": "简单",
+      "question": "提现状态为通过的有多少条",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 15,
+      "level": "简单",
+      "question": "提现状态为拒绝的有多少条",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 16,
+      "level": "简单",
+      "question": "staff表共有多少名员工",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 17,
+      "level": "简单",
+      "question": "职位为组长的员工有多少人",
+      "no_retry": true,
+      "with_retry": true,
+      "msg": "SELECT COUNT(*) AS count FROM staff WHERE title = '组长';"
+    },
+    {
+      "id": 18,
+      "level": "简单",
+      "question": "职位为专员的员工有多少人",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 19,
+      "level": "简单",
+      "question": "hospitals表共有多少家医院",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 20,
+      "level": "简单",
+      "question": "三甲医院有多少家",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 21,
+      "level": "简单",
+      "question": "diseases表共有多少种疾病",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 22,
+      "level": "简单",
+      "question": "regions表共有多少个大区",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 23,
+      "level": "简单",
+      "question": "teams表共有多少个团队",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 24,
+      "level": "简单",
+      "question": "70岁以上的患者有多少人",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 25,
+      "level": "简单",
+      "question": "目标金额为50000的项目有多少个",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 26,
+      "level": "聚合",
+      "question": "所有项目的总筹款金额是多少",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 27,
+      "level": "聚合",
+      "question": "平均每个项目筹款多少钱",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 28,
+      "level": "聚合",
+      "question": "筹款金额最高的项目是哪个",
+      "no_retry": true,
+      "with_retry": true,
+      "msg": "SELECT campaign_id, patient_name, raised_amount, donor_count"
+    },
+    {
+      "id": 29,
+      "level": "聚合",
+      "question": "筹款金额最低的项目是哪个",
+      "no_retry": true,
+      "with_retry": true,
+      "msg": "SELECT campaign_id, patient_name, raised_amount, donor_count"
+    },
+    {
+      "id": 30,
+      "level": "聚合",
+      "question": "捐款总金额是多少",
+      "no_retry": true,
+      "with_retry": true,
+      "msg": "SELECT SUM(amount) AS total_donation_amount FROM donations;"
+    },
+    {
+      "id": 31,
+      "level": "聚合",
+      "question": "平均每笔捐款金额是多少",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 32,
+      "level": "聚合",
+      "question": "单笔捐款最高金额是多少",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 33,
+      "level": "聚合",
+      "question": "各省筹款总额排名前5",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 34,
+      "level": "聚合",
+      "question": "各省项目数量排名",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 35,
+      "level": "聚合",
+      "question": "各捐款渠道的捐款总额对比",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 36,
+      "level": "聚合",
+      "question": "各捐款渠道的捐款笔数对比",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 37,
+      "level": "聚合",
+      "question": "按性别统计平均筹款金额",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 38,
+      "level": "聚合",
+      "question": "按筹款状态统计项目数量",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 39,
+      "level": "聚合",
+      "question": "按筹款状态统计总筹款金额",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 40,
+      "level": "聚合",
+      "question": "患者年龄分布，按10岁分段统计",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 41,
+      "level": "聚合",
+      "question": "2024年每月的捐款总额趋势",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 42,
+      "level": "聚合",
+      "question": "2023年每月新增筹款项目数",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 43,
+      "level": "聚合",
+      "question": "每个疾病科室的项目数量",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 44,
+      "level": "聚合",
+      "question": "目标金额达成率超过100%的项目有多少个",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 45,
+      "level": "聚合",
+      "question": "平均每个项目的捐款人数",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 46,
+      "level": "聚合",
+      "question": "捐款人数最多的项目",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 47,
+      "level": "聚合",
+      "question": "提现总金额是多少",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 48,
+      "level": "聚合",
+      "question": "平均提现金额是多少",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 49,
+      "level": "聚合",
+      "question": "提现审核通过率是多少",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 50,
+      "level": "聚合",
+      "question": "按职位统计员工人数",
+      "no_retry": true,
+      "with_retry": true,
+      "msg": "SELECT title, COUNT(*) AS count FROM staff GROUP BY title OR"
+    },
+    {
+      "id": 51,
+      "level": "聚合",
+      "question": "每位员工负责的项目数量排名前10",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 52,
+      "level": "聚合",
+      "question": "筹款金额超过目标金额的项目占比",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 53,
+      "level": "聚合",
+      "question": "各疾病类别的平均筹款金额",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 54,
+      "level": "聚合",
+      "question": "住院类项目和门诊类项目的数量对比",
+      "no_retry": true,
+      "with_retry": true,
+      "msg": "SELECT d.visit_type, COUNT(c.campaign_id) AS project_count F"
+    },
+    {
+      "id": 55,
+      "level": "聚合",
+      "question": "2024年第一季度的总捐款金额",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 56,
+      "level": "多表",
+      "question": "各大区的总筹款金额排名",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 57,
+      "level": "多表",
+      "question": "各大区的项目数量",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 58,
+      "level": "多表",
+      "question": "各团队负责的项目数量排名",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 59,
+      "level": "多表",
+      "question": "各团队的总筹款金额",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 60,
+      "level": "多表",
+      "question": "三甲医院的筹款项目共有多少个",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 61,
+      "level": "多表",
+      "question": "三甲医院项目的平均筹款金额",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 62,
+      "level": "多表",
+      "question": "广东省三甲医院的筹款项目数量",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 63,
+      "level": "多表",
+      "question": "肿瘤科疾病的筹款项目有多少个",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 64,
+      "level": "多表",
+      "question": "各疾病名称对应的项目数量排名前10",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 65,
+      "level": "多表",
+      "question": "筹款金额最高的前5个项目对应的医院名称",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 66,
+      "level": "多表",
+      "question": "每个大区的平均筹款金额",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 67,
+      "level": "多表",
+      "question": "捐款人数最多的前5个项目的疾病名称",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 68,
+      "level": "多表",
+      "question": "各省的三甲医院数量",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 69,
+      "level": "多表",
+      "question": "每个团队的提现通过总金额",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 70,
+      "level": "多表",
+      "question": "北京大区下有多少个团队",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 71,
+      "level": "多表",
+      "question": "每位组长负责的项目数量",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 72,
+      "level": "多表",
+      "question": "微信渠道捐款最多的前5个项目",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 73,
+      "level": "多表",
+      "question": "各大区的提现通过率对比",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 74,
+      "level": "多表",
+      "question": "住院类疾病的总筹款金额",
+      "no_retry": true,
+      "with_retry": true,
+      "msg": "SELECT SUM(c.raised_amount) AS total_raised_amount FROM camp"
+    },
+    {
+      "id": 75,
+      "level": "多表",
+      "question": "门诊类疾病的平均筹款金额",
+      "no_retry": true,
+      "with_retry": true,
+      "msg": "SELECT ROUND(AVG(c.raised_amount), 2) AS avg_raised_amount F"
+    },
+    {
+      "id": 76,
+      "level": "多表",
+      "question": "每个大区筹款成功项目的数量",
+      "no_retry": true,
+      "with_retry": true,
+      "msg": "SELECT r.name AS region_name, COUNT(*) AS successful_campaig"
+    },
+    {
+      "id": 77,
+      "level": "多表",
+      "question": "内科疾病的筹款项目有多少",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 78,
+      "level": "多表",
+      "question": "外科疾病的平均筹款金额",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 79,
+      "level": "多表",
+      "question": "各省的平均捐款金额",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 80,
+      "level": "多表",
+      "question": "每个团队的平均项目筹款金额",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 81,
+      "level": "多表",
+      "question": "筹款完成率最高的前5个省份",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 82,
+      "level": "多表",
+      "question": "各大区下属团队数量",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 83,
+      "level": "多表",
+      "question": "捐款总额最高的前3个省份对应的大区",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 84,
+      "level": "多表",
+      "question": "每家医院的筹款项目数量排名前10",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 85,
+      "level": "多表",
+      "question": "三甲医院项目的提现通过率",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 86,
+      "level": "歧义",
+      "question": "筹款进行中的项目有哪些",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 87,
+      "level": "歧义",
+      "question": "已经关闭的项目平均筹了多少钱",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 88,
+      "level": "歧义",
+      "question": "哪个员工业绩最好",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 89,
+      "level": "歧义",
+      "question": "最近一个月新增了多少筹款项目",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 90,
+      "level": "歧义",
+      "question": "筹款效率最高的团队",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 91,
+      "level": "歧义",
+      "question": "每个staff的平均筹款金额",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 92,
+      "level": "歧义",
+      "question": "捐款金额分布情况",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 93,
+      "level": "歧义",
+      "question": "哪个渠道的用户最慷慨",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 94,
+      "level": "歧义",
+      "question": "项目成功率最高的省份",
+      "no_retry": true,
+      "with_retry": true,
+      "msg": "SELECT r.name AS region_name, COUNT(*) AS total_closed_campa"
+    },
+    {
+      "id": 95,
+      "level": "歧义",
+      "question": "老年患者的筹款情况",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 96,
+      "level": "歧义",
+      "question": "儿童患者有多少",
+      "no_retry": true,
+      "with_retry": true,
+      "msg": "SELECT COUNT(*) AS child_campaign_count FROM campaigns WHERE"
+    },
+    {
+      "id": 97,
+      "level": "歧义",
+      "question": "大病项目的筹款情况",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 98,
+      "level": "歧义",
+      "question": "哪个大区表现最好",
+      "no_retry": true,
+      "with_retry": true,
+      "msg": "SELECT r.name AS region_name, COUNT(c.campaign_id) AS campai"
+    },
+    {
+      "id": 99,
+      "level": "歧义",
+      "question": "捐款最活跃的时间段",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    },
+    {
+      "id": 100,
+      "level": "歧义",
+      "question": "最难筹到钱的疾病类型",
+      "no_retry": false,
+      "with_retry": true,
+      "msg": "无SQL生成"
+    }
+  ]
+}

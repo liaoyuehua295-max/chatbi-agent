@@ -1,6 +1,7 @@
 import os
 import streamlit as st
 from dotenv import load_dotenv
+from multi_agent import run as multi_agent_run
 from agent import ChatBIAgent
 from logger import log_query, update_feedback
 
@@ -10,7 +11,7 @@ LANGCHAIN_API_KEY = os.getenv("LANGCHAIN_API_KEY", "")
 
 st.set_page_config(page_title="医疗众筹 ChatBI", page_icon="📊", layout="wide")
 st.title("📊 医疗众筹 ChatBI Agent")
-st.caption("基于 LangChain + RAG + Text-to-SQL 的医疗众筹数据分析助手")
+st.caption("基于 LangGraph 多智能体 + RAG + Text-to-SQL 的医疗众筹数据分析助手")
 
 with st.sidebar:
     st.header("⚙️ 配置")
@@ -109,7 +110,20 @@ if user_input:
 
     with st.chat_message("assistant"):
         with st.spinner("查询中..."):
-            result = st.session_state["agent"].chat(user_input, enable_insight=enable_insight)
+            # 多Agent路由
+            ma_result = multi_agent_run(user_input)
+            route = ma_result.get("route", "sql")
+            route_reason = ma_result.get("reason", "")
+
+            # 如果是sql类型，用完整ChatBIAgent获取图表和洞察
+            if route == "sql":
+                result = st.session_state["agent"].chat(user_input, enable_insight=enable_insight)
+            else:
+                result = {
+                    "answer": ma_result["answer"],
+                    "df": None, "chart": None,
+                    "sql": None, "insight": None, "error": None,
+                }
 
         df = result.get("df")
         chart = result.get("chart")
@@ -117,6 +131,10 @@ if user_input:
         insight = result.get("insight")
         error = result.get("error")
         answer = result["answer"]
+
+        # 显示路由标签
+        route_label = "🔍 数据查询" if route == "sql" else "💬 业务咨询"
+        st.caption(f"路由：{route_label}　{route_reason}")
 
         st.markdown(answer)
 

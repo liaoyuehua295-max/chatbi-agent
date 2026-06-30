@@ -1,0 +1,602 @@
+[
+  {
+    "question": "campaigns表一共有多少条记录",
+    "sql": "SELECT COUNT(*) FROM campaigns",
+    "answer": "[(5000,)]",
+    "status": "ok"
+  },
+  {
+    "question": "男性患者有多少人",
+    "sql": "SELECT COUNT(*) FROM campaigns WHERE gender='男'",
+    "answer": "[(2504,)]",
+    "status": "ok"
+  },
+  {
+    "question": "女性患者有多少人",
+    "sql": "SELECT COUNT(*) FROM campaigns WHERE gender='女'",
+    "answer": "[(2496,)]",
+    "status": "ok"
+  },
+  {
+    "question": "筹款状态为completed的项目有多少",
+    "sql": "SELECT COUNT(*) FROM campaigns WHERE status='completed'",
+    "answer": "[(0,)]",
+    "status": "ok"
+  },
+  {
+    "question": "筹款状态为active的项目有多少",
+    "sql": "SELECT COUNT(*) FROM campaigns WHERE status='active'",
+    "answer": "[(0,)]",
+    "status": "ok"
+  },
+  {
+    "question": "筹款状态为closed的项目有多少",
+    "sql": "SELECT COUNT(*) FROM campaigns WHERE status='closed'",
+    "answer": "[(0,)]",
+    "status": "ok"
+  },
+  {
+    "question": "广东省有多少个筹款项目",
+    "sql": "SELECT COUNT(*) FROM campaigns WHERE province='广东'",
+    "answer": "[(329,)]",
+    "status": "ok"
+  },
+  {
+    "question": "北京市有多少个筹款项目",
+    "sql": "SELECT COUNT(*) FROM campaigns WHERE city='北京'",
+    "answer": "[(316,)]",
+    "status": "ok"
+  },
+  {
+    "question": "donations表共有多少条捐款记录",
+    "sql": "SELECT COUNT(*) FROM donations",
+    "answer": "[(217608,)]",
+    "status": "ok"
+  },
+  {
+    "question": "微信渠道的捐款有多少条",
+    "sql": "SELECT COUNT(*) FROM donations WHERE channel='微信'",
+    "answer": "[(108828,)]",
+    "status": "ok"
+  },
+  {
+    "question": "支付宝渠道的捐款有多少条",
+    "sql": "SELECT COUNT(*) FROM donations WHERE channel='支付宝'",
+    "answer": "[(0,)]",
+    "status": "ok"
+  },
+  {
+    "question": "匿名捐款有多少条",
+    "sql": "SELECT COUNT(*) FROM donations WHERE is_anonymous=1",
+    "answer": "[(65601,)]",
+    "status": "ok"
+  },
+  {
+    "question": "withdrawals表共有多少条记录",
+    "sql": "SELECT COUNT(*) FROM withdrawals",
+    "answer": "[(4923,)]",
+    "status": "ok"
+  },
+  {
+    "question": "提现状态为通过的有多少条",
+    "sql": "SELECT COUNT(*) FROM withdrawals WHERE status='通过'",
+    "answer": "[(4441,)]",
+    "status": "ok"
+  },
+  {
+    "question": "提现状态为拒绝的有多少条",
+    "sql": "SELECT COUNT(*) FROM withdrawals WHERE status='拒绝'",
+    "answer": "[(258,)]",
+    "status": "ok"
+  },
+  {
+    "question": "staff表共有多少名员工",
+    "sql": "SELECT COUNT(*) FROM staff",
+    "answer": "[(195,)]",
+    "status": "ok"
+  },
+  {
+    "question": "职位为组长的员工有多少人",
+    "sql": "SELECT COUNT(*) FROM staff WHERE title='组长'",
+    "answer": "[(33,)]",
+    "status": "ok"
+  },
+  {
+    "question": "职位为专员的员工有多少人",
+    "sql": "SELECT COUNT(*) FROM staff WHERE title='专员'",
+    "answer": "[(162,)]",
+    "status": "ok"
+  },
+  {
+    "question": "hospitals表共有多少家医院",
+    "sql": "SELECT COUNT(*) FROM hospitals",
+    "answer": "[(113,)]",
+    "status": "ok"
+  },
+  {
+    "question": "三甲医院有多少家",
+    "sql": "SELECT COUNT(*) FROM hospitals WHERE level='三甲'",
+    "answer": "[(61,)]",
+    "status": "ok"
+  },
+  {
+    "question": "diseases表共有多少种疾病",
+    "sql": "SELECT COUNT(*) FROM diseases",
+    "answer": "[(30,)]",
+    "status": "ok"
+  },
+  {
+    "question": "regions表共有多少个大区",
+    "sql": "SELECT COUNT(*) FROM regions",
+    "answer": "[(6,)]",
+    "status": "ok"
+  },
+  {
+    "question": "teams表共有多少个团队",
+    "sql": "SELECT COUNT(*) FROM teams",
+    "answer": "[(33,)]",
+    "status": "ok"
+  },
+  {
+    "question": "70岁以上的患者有多少人",
+    "sql": "SELECT COUNT(*) FROM campaigns WHERE age>70",
+    "answer": "[(628,)]",
+    "status": "ok"
+  },
+  {
+    "question": "目标金额为50000的项目有多少个",
+    "sql": "SELECT COUNT(*) FROM campaigns WHERE target_amount=50000",
+    "answer": "[(1048,)]",
+    "status": "ok"
+  },
+  {
+    "question": "所有项目的总筹款金额是多少",
+    "sql": "SELECT ROUND(SUM(raised_amount),2) FROM campaigns",
+    "answer": "[(244215424.71,)]",
+    "status": "ok"
+  },
+  {
+    "question": "平均每个项目筹款多少钱",
+    "sql": "SELECT ROUND(AVG(raised_amount),2) FROM campaigns",
+    "answer": "[(48843.08,)]",
+    "status": "ok"
+  },
+  {
+    "question": "筹款金额最高的项目是哪个",
+    "sql": "SELECT campaign_id, patient_name, raised_amount FROM campaigns ORDER BY raised_amount DESC LIMIT 1",
+    "answer": "[(85, '崔勇', 300000.0)]",
+    "status": "ok"
+  },
+  {
+    "question": "筹款金额最低的项目是哪个",
+    "sql": "SELECT campaign_id, patient_name, raised_amount FROM campaigns ORDER BY raised_amount ASC LIMIT 1",
+    "answer": "[(4901, '侯玉', 115.18)]",
+    "status": "ok"
+  },
+  {
+    "question": "捐款总金额是多少",
+    "sql": "SELECT ROUND(SUM(amount),2) FROM donations",
+    "answer": "[(31952320.42,)]",
+    "status": "ok"
+  },
+  {
+    "question": "平均每笔捐款金额是多少",
+    "sql": "SELECT ROUND(AVG(amount),2) FROM donations",
+    "answer": "[(146.83,)]",
+    "status": "ok"
+  },
+  {
+    "question": "单笔捐款最高金额是多少",
+    "sql": "SELECT MAX(amount) FROM donations",
+    "answer": "[(10000.0,)]",
+    "status": "ok"
+  },
+  {
+    "question": "各省筹款总额排名前5",
+    "sql": "SELECT province, ROUND(SUM(raised_amount),2) AS total FROM campaigns GROUP BY province ORDER BY total DESC LIMIT 5",
+    "answer": "[('广东', 17909886.18), ('河北', 17865043.86), ('湖北', 17381435.86), ('四川', 17375909.93), ('陕西', 16885946.69)]",
+    "status": "ok"
+  },
+  {
+    "question": "各省项目数量排名",
+    "sql": "SELECT province, COUNT(*) AS cnt FROM campaigns GROUP BY province ORDER BY cnt DESC",
+    "answer": "[('湖北', 373), ('湖南', 360), ('山东', 352), ('陕西', 349), ('福建', 340)]",
+    "status": "ok"
+  },
+  {
+    "question": "各捐款渠道的捐款总额对比",
+    "sql": "SELECT channel, ROUND(SUM(amount),2) AS total FROM donations GROUP BY channel ORDER BY total DESC",
+    "answer": "[('微信', 15964835.57), ('APP', 10595331.64), ('H5', 5392153.21)]",
+    "status": "ok"
+  },
+  {
+    "question": "各捐款渠道的捐款笔数对比",
+    "sql": "SELECT channel, COUNT(*) AS cnt FROM donations GROUP BY channel ORDER BY cnt DESC",
+    "answer": "[('微信', 108828), ('APP', 72143), ('H5', 36637)]",
+    "status": "ok"
+  },
+  {
+    "question": "按性别统计平均筹款金额",
+    "sql": "SELECT gender, ROUND(AVG(raised_amount),2) FROM campaigns GROUP BY gender",
+    "answer": "[('女', 49673.47), ('男', 48015.35)]",
+    "status": "ok"
+  },
+  {
+    "question": "按筹款状态统计项目数量",
+    "sql": "SELECT status, COUNT(*) FROM campaigns GROUP BY status",
+    "answer": "[('已关闭', 3526), ('已完成', 1474)]",
+    "status": "ok"
+  },
+  {
+    "question": "按筹款状态统计总筹款金额",
+    "sql": "SELECT status, ROUND(SUM(raised_amount),2) FROM campaigns GROUP BY status",
+    "answer": "[('已关闭', 122825424.71), ('已完成', 121390000.0)]",
+    "status": "ok"
+  },
+  {
+    "question": "患者年龄分布，按10岁分段统计",
+    "sql": "SELECT (age/10)*10 AS age_group, COUNT(*) FROM campaigns GROUP BY age_group ORDER BY age_group",
+    "answer": "[(0, 549), (10, 654), (20, 644), (30, 641), (40, 619)]",
+    "status": "ok"
+  },
+  {
+    "question": "2024年每月的捐款总额趋势",
+    "sql": "SELECT strftime('%Y-%m', donated_at) AS month, ROUND(SUM(amount),2) FROM donations WHERE donated_at LIKE '2024%' GROUP BY month ORDER BY month",
+    "answer": "[('2024-01', 1076668.62), ('2024-02', 1041887.17), ('2024-03', 1092285.28), ('2024-04', 917892.17), ('2024-05', 942985.71)]",
+    "status": "ok"
+  },
+  {
+    "question": "2023年每月新增筹款项目数",
+    "sql": "SELECT strftime('%Y-%m', created_at) AS month, COUNT(*) FROM campaigns WHERE created_at LIKE '2023%' GROUP BY month ORDER BY month",
+    "answer": "[('2023-01', 166), ('2023-02', 144), ('2023-03', 177), ('2023-04', 161), ('2023-05', 174)]",
+    "status": "ok"
+  },
+  {
+    "question": "每个疾病科室的项目数量",
+    "sql": "SELECT d.department, COUNT(c.campaign_id) FROM campaigns c JOIN diseases d ON c.disease_id=d.disease_id GROUP BY d.department ORDER BY COUNT(c.campaign_id) DESC",
+    "answer": "[('肿瘤科', 850), ('神经内科', 518), ('肾内科', 493), ('呼吸科', 350), ('血液科', 342)]",
+    "status": "ok"
+  },
+  {
+    "question": "目标金额达成率超过100%的项目有多少个",
+    "sql": "SELECT COUNT(*) FROM campaigns WHERE raised_amount >= target_amount",
+    "answer": "[(1474,)]",
+    "status": "ok"
+  },
+  {
+    "question": "平均每个项目的捐款人数",
+    "sql": "SELECT ROUND(AVG(donor_count),2) FROM campaigns",
+    "answer": "[(488.85,)]",
+    "status": "ok"
+  },
+  {
+    "question": "捐款人数最多的项目",
+    "sql": "SELECT campaign_id, patient_name, donor_count FROM campaigns ORDER BY donor_count DESC LIMIT 1",
+    "answer": "[(4986, '朱艳', 5945)]",
+    "status": "ok"
+  },
+  {
+    "question": "提现总金额是多少",
+    "sql": "SELECT ROUND(SUM(amount),2) FROM withdrawals",
+    "answer": "[(241726056.12,)]",
+    "status": "ok"
+  },
+  {
+    "question": "平均提现金额是多少",
+    "sql": "SELECT ROUND(AVG(amount),2) FROM withdrawals",
+    "answer": "[(49101.37,)]",
+    "status": "ok"
+  },
+  {
+    "question": "提现审核通过率是多少",
+    "sql": "SELECT ROUND(SUM(CASE WHEN status='通过' THEN 1 ELSE 0 END)*100.0/COUNT(*),2) FROM withdrawals",
+    "answer": "[(90.21,)]",
+    "status": "ok"
+  },
+  {
+    "question": "按职位统计员工人数",
+    "sql": "SELECT title, COUNT(*) FROM staff GROUP BY title ORDER BY COUNT(*) DESC",
+    "answer": "[('专员', 162), ('组长', 33)]",
+    "status": "ok"
+  },
+  {
+    "question": "每位员工负责的项目数量排名前10",
+    "sql": "SELECT staff_id, COUNT(*) AS cnt FROM campaigns GROUP BY staff_id ORDER BY cnt DESC LIMIT 10",
+    "answer": "[(94, 44), (134, 40), (172, 37), (44, 37), (89, 35)]",
+    "status": "ok"
+  },
+  {
+    "question": "筹款金额超过目标金额的项目占比",
+    "sql": "SELECT ROUND(SUM(CASE WHEN raised_amount>=target_amount THEN 1 ELSE 0 END)*100.0/COUNT(*),2) FROM campaigns",
+    "answer": "[(29.48,)]",
+    "status": "ok"
+  },
+  {
+    "question": "各疾病类别的平均筹款金额",
+    "sql": "SELECT d.category, ROUND(AVG(c.raised_amount),2) FROM campaigns c JOIN diseases d ON c.disease_id=d.disease_id GROUP BY d.category",
+    "answer": "[('儿童疾病', 28010.78), ('呼吸系统', 17678.39), ('外伤', 17230.78), ('心脑血管', 37508.19), ('慢性病', 16360.42)]",
+    "status": "ok"
+  },
+  {
+    "question": "住院类项目和门诊类项目的数量对比",
+    "sql": "SELECT d.visit_type, COUNT(*) FROM campaigns c JOIN diseases d ON c.disease_id=d.disease_id GROUP BY d.visit_type",
+    "answer": "[('住院', 4533), ('门诊', 467)]",
+    "status": "ok"
+  },
+  {
+    "question": "2024年第一季度的总捐款金额",
+    "sql": "SELECT ROUND(SUM(amount),2) FROM donations WHERE donated_at>='2024-01-01' AND donated_at<'2024-04-01'",
+    "answer": "[(3210841.07,)]",
+    "status": "ok"
+  },
+  {
+    "question": "各大区的总筹款金额排名",
+    "sql": "SELECT r.name, ROUND(SUM(c.raised_amount),2) AS total FROM campaigns c JOIN staff s ON c.staff_id=s.staff_id JOIN teams t ON s.team_id=t.team_id JOIN regions r ON t.region_id=r.region_id GROUP BY r.name ORDER BY total DESC",
+    "answer": "[('西南大区', 60537136.2), ('华中大区', 51956862.57), ('华南大区', 43352834.46), ('华北大区', 38152114.8), ('西北大区', 30646242.57)]",
+    "status": "ok"
+  },
+  {
+    "question": "各大区的项目数量",
+    "sql": "SELECT r.name, COUNT(c.campaign_id) FROM campaigns c JOIN staff s ON c.staff_id=s.staff_id JOIN teams t ON s.team_id=t.team_id JOIN regions r ON t.region_id=r.region_id GROUP BY r.name",
+    "answer": "[('华东大区', 420), ('华中大区', 1061), ('华北大区', 791), ('华南大区', 832), ('西北大区', 632)]",
+    "status": "ok"
+  },
+  {
+    "question": "各团队负责的项目数量排名",
+    "sql": "SELECT t.name, COUNT(c.campaign_id) AS cnt FROM campaigns c JOIN staff s ON c.staff_id=s.staff_id JOIN teams t ON s.team_id=t.team_id GROUP BY t.name ORDER BY cnt DESC",
+    "answer": "[('武汉2组', 220), ('广州3组', 204), ('广州1组', 201), ('成都3组', 196), ('北京1组', 193)]",
+    "status": "ok"
+  },
+  {
+    "question": "各团队的总筹款金额",
+    "sql": "SELECT t.name, ROUND(SUM(c.raised_amount),2) FROM campaigns c JOIN staff s ON c.staff_id=s.staff_id JOIN teams t ON s.team_id=t.team_id GROUP BY t.name ORDER BY SUM(c.raised_amount) DESC",
+    "answer": "[('广州1组', 10919077.62), ('武汉2组', 10498823.38), ('广州3组', 10452683.88), ('深圳1组', 9847125.3), ('郑州2组', 9746315.75)]",
+    "status": "ok"
+  },
+  {
+    "question": "三甲医院的筹款项目共有多少个",
+    "sql": "SELECT COUNT(*) FROM campaigns c JOIN hospitals h ON c.hospital_id=h.hospital_id WHERE h.level='三甲'",
+    "answer": "[(2678,)]",
+    "status": "ok"
+  },
+  {
+    "question": "三甲医院项目的平均筹款金额",
+    "sql": "SELECT ROUND(AVG(c.raised_amount),2) FROM campaigns c JOIN hospitals h ON c.hospital_id=h.hospital_id WHERE h.level='三甲'",
+    "answer": "[(49519.75,)]",
+    "status": "ok"
+  },
+  {
+    "question": "广东省三甲医院的筹款项目数量",
+    "sql": "SELECT COUNT(*) FROM campaigns c JOIN hospitals h ON c.hospital_id=h.hospital_id WHERE h.level='三甲' AND h.province='广东'",
+    "answer": "[(150,)]",
+    "status": "ok"
+  },
+  {
+    "question": "肿瘤科疾病的筹款项目有多少个",
+    "sql": "SELECT COUNT(*) FROM campaigns c JOIN diseases d ON c.disease_id=d.disease_id WHERE d.department='肿瘤科'",
+    "answer": "[(850,)]",
+    "status": "ok"
+  },
+  {
+    "question": "各疾病名称对应的项目数量排名前10",
+    "sql": "SELECT d.name, COUNT(c.campaign_id) AS cnt FROM campaigns c JOIN diseases d ON c.disease_id=d.disease_id GROUP BY d.name ORDER BY cnt DESC LIMIT 10",
+    "answer": "[('胃癌', 189), ('矽肺病', 187), ('重症肌无力', 184), ('血友病', 181), ('烧烫伤', 181)]",
+    "status": "ok"
+  },
+  {
+    "question": "筹款金额最高的前5个项目对应的医院名称",
+    "sql": "SELECT c.patient_name, c.raised_amount, h.name FROM campaigns c JOIN hospitals h ON c.hospital_id=h.hospital_id ORDER BY c.raised_amount DESC LIMIT 5",
+    "answer": "[('崔勇', 300000.0, '合肥市第一人民医院'), ('罗静宝', 300000.0, '绍兴中医院'), ('马秀', 300000.0, '西安儿童医院'), ('赵鹏燕', 300000.0, '东莞儿童医院'), ('曹丽峰', 300000.0, '温州市第一人民医院')]",
+    "status": "ok"
+  },
+  {
+    "question": "每个大区的平均筹款金额",
+    "sql": "SELECT r.name, ROUND(AVG(c.raised_amount),2) FROM campaigns c JOIN staff s ON c.staff_id=s.staff_id JOIN teams t ON s.team_id=t.team_id JOIN regions r ON t.region_id=r.region_id GROUP BY r.name",
+    "answer": "[('华东大区', 46595.8), ('华中大区', 48969.71), ('华北大区', 48232.76), ('华南大区', 52106.77), ('西北大区', 48490.89)]",
+    "status": "ok"
+  },
+  {
+    "question": "捐款人数最多的前5个项目的疾病名称",
+    "sql": "SELECT c.patient_name, c.donor_count, d.name FROM campaigns c JOIN diseases d ON c.disease_id=d.disease_id ORDER BY c.donor_count DESC LIMIT 5",
+    "answer": "[('朱艳', 5945, '渐冻症'), ('邱美', 5839, '重症肌无力'), ('马华华', 5821, '渐冻症'), ('卢英', 5731, '渐冻症'), ('谢和', 5537, '重症肌无力')]",
+    "status": "ok"
+  },
+  {
+    "question": "各省的三甲医院数量",
+    "sql": "SELECT province, COUNT(*) FROM hospitals WHERE level='三甲' GROUP BY province ORDER BY COUNT(*) DESC",
+    "answer": "[('浙江', 8), ('河北', 7), ('江苏', 7), ('广东', 7), ('四川', 7)]",
+    "status": "ok"
+  },
+  {
+    "question": "每个团队的提现通过总金额",
+    "sql": "SELECT t.name, ROUND(SUM(w.amount),2) FROM withdrawals w JOIN campaigns c ON w.campaign_id=c.campaign_id JOIN staff s ON c.staff_id=s.staff_id JOIN teams t ON s.team_id=t.team_id WHERE w.status='通过' GROUP BY t.name ORDER BY SUM(w.amount) DESC",
+    "answer": "[('广州1组', 9584008.55), ('武汉2组', 9484073.47), ('郑州2组', 9009999.81), ('深圳1组', 8919083.37), ('广州3组', 8846982.28)]",
+    "status": "ok"
+  },
+  {
+    "question": "北京大区下有多少个团队",
+    "sql": "SELECT COUNT(*) FROM teams t JOIN regions r ON t.region_id=r.region_id WHERE r.name LIKE '%北京%'",
+    "answer": "[(0,)]",
+    "status": "ok"
+  },
+  {
+    "question": "每位组长负责的项目数量",
+    "sql": "SELECT s.name, COUNT(c.campaign_id) AS cnt FROM campaigns c JOIN staff s ON c.staff_id=s.staff_id WHERE s.title='组长' GROUP BY s.name ORDER BY cnt DESC",
+    "answer": "[('赵丽', 32), ('郭军娜', 31), ('胡静', 31), ('杨丽涛', 31), ('李磊磊', 31)]",
+    "status": "ok"
+  },
+  {
+    "question": "微信渠道捐款最多的前5个项目",
+    "sql": "SELECT c.campaign_id, c.patient_name, ROUND(SUM(d.amount),2) AS total FROM donations d JOIN campaigns c ON d.campaign_id=c.campaign_id WHERE d.channel='微信' GROUP BY c.campaign_id ORDER BY total DESC LIMIT 5",
+    "answer": "[(1514, '张美', 30000.0), (3657, '蔡旭平', 28805.95), (1120, '金涛飞', 26313.55), (1291, '董洋', 25428.18), (3573, '胡昊和', 25383.05)]",
+    "status": "ok"
+  },
+  {
+    "question": "各大区的提现通过率对比",
+    "sql": "SELECT r.name, ROUND(SUM(CASE WHEN w.status='通过' THEN 1 ELSE 0 END)*100.0/COUNT(*),2) FROM withdrawals w JOIN campaigns c ON w.campaign_id=c.campaign_id JOIN staff s ON c.staff_id=s.staff_id JOIN teams t ON s.team_id=t.team_id JOIN regions r ON t.region_id=r.region_id GROUP BY r.name",
+    "answer": "[('华东大区', 91.87), ('华中大区', 91.43), ('华北大区', 91.69), ('华南大区', 88.62), ('西北大区', 91.13)]",
+    "status": "ok"
+  },
+  {
+    "question": "住院类疾病的总筹款金额",
+    "sql": "SELECT ROUND(SUM(c.raised_amount),2) FROM campaigns c JOIN diseases d ON c.disease_id=d.disease_id WHERE d.visit_type='住院'",
+    "answer": "[(236575110.29,)]",
+    "status": "ok"
+  },
+  {
+    "question": "门诊类疾病的平均筹款金额",
+    "sql": "SELECT ROUND(AVG(c.raised_amount),2) FROM campaigns c JOIN diseases d ON c.disease_id=d.disease_id WHERE d.visit_type='门诊'",
+    "answer": "[(16360.42,)]",
+    "status": "ok"
+  },
+  {
+    "question": "每个大区筹款成功项目的数量",
+    "sql": "SELECT r.name, COUNT(c.campaign_id) FROM campaigns c JOIN staff s ON c.staff_id=s.staff_id JOIN teams t ON s.team_id=t.team_id JOIN regions r ON t.region_id=r.region_id WHERE c.status='completed' GROUP BY r.name",
+    "answer": "[]",
+    "status": "ok"
+  },
+  {
+    "question": "内科疾病的筹款项目有多少",
+    "sql": "SELECT COUNT(*) FROM campaigns c JOIN diseases d ON c.disease_id=d.disease_id WHERE d.department='内科'",
+    "answer": "[(0,)]",
+    "status": "ok"
+  },
+  {
+    "question": "外科疾病的平均筹款金额",
+    "sql": "SELECT ROUND(AVG(c.raised_amount),2) FROM campaigns c JOIN diseases d ON c.disease_id=d.disease_id WHERE d.department='外科'",
+    "answer": "[(None,)]",
+    "status": "ok"
+  },
+  {
+    "question": "各省的平均捐款金额",
+    "sql": "SELECT c.province, ROUND(AVG(d.amount),2) FROM donations d JOIN campaigns c ON d.campaign_id=c.campaign_id GROUP BY c.province ORDER BY AVG(d.amount) DESC",
+    "answer": "[('浙江', 156.19), ('江苏', 156.16), ('河北', 155.71), ('福建', 152.46), ('上海', 150.45)]",
+    "status": "ok"
+  },
+  {
+    "question": "每个团队的平均项目筹款金额",
+    "sql": "SELECT t.name, ROUND(AVG(c.raised_amount),2) FROM campaigns c JOIN staff s ON c.staff_id=s.staff_id JOIN teams t ON s.team_id=t.team_id GROUP BY t.name ORDER BY AVG(c.raised_amount) DESC",
+    "answer": "[('天津1组', 57323.74), ('广州1组', 54323.77), ('佛山1组', 54270.15), ('重庆2组', 53283.08), ('兰州1组', 53068.74)]",
+    "status": "ok"
+  },
+  {
+    "question": "筹款完成率最高的前5个省份",
+    "sql": "SELECT province, ROUND(AVG(raised_amount*100.0/target_amount),2) AS rate FROM campaigns GROUP BY province ORDER BY rate DESC LIMIT 5",
+    "answer": "[('广东', 63.79), ('安徽', 62.05), ('四川', 61.47), ('北京', 61.26), ('河北', 60.82)]",
+    "status": "ok"
+  },
+  {
+    "question": "各大区下属团队数量",
+    "sql": "SELECT r.name, COUNT(t.team_id) FROM teams t JOIN regions r ON t.region_id=r.region_id GROUP BY r.name",
+    "answer": "[('华东大区', 3), ('华中大区', 7), ('华北大区', 5), ('华南大区', 5), ('西北大区', 4)]",
+    "status": "ok"
+  },
+  {
+    "question": "捐款总额最高的前3个省份对应的大区",
+    "sql": "SELECT c.province, ROUND(SUM(d.amount),2) AS total, r.name FROM donations d JOIN campaigns c ON d.campaign_id=c.campaign_id JOIN staff s ON c.staff_id=s.staff_id JOIN teams t ON s.team_id=t.team_id JOIN regions r ON t.region_id=r.region_id GROUP BY c.province ORDER BY total DESC LIMIT 3",
+    "answer": "[('湖北', 2326961.49, '西北大区'), ('陕西', 2297911.92, '华东大区'), ('上海', 2244630.49, '西南大区')]",
+    "status": "ok"
+  },
+  {
+    "question": "每家医院的筹款项目数量排名前10",
+    "sql": "SELECT h.name, COUNT(c.campaign_id) AS cnt FROM campaigns c JOIN hospitals h ON c.hospital_id=h.hospital_id GROUP BY h.name ORDER BY cnt DESC LIMIT 10",
+    "answer": "[('重庆省人民医院', 163), ('重庆儿童医院', 159), ('上海市第一人民医院', 130), ('北京中医院', 114), ('上海儿童医院', 109)]",
+    "status": "ok"
+  },
+  {
+    "question": "三甲医院项目的提现通过率",
+    "sql": "SELECT ROUND(SUM(CASE WHEN w.status='通过' THEN 1 ELSE 0 END)*100.0/COUNT(*),2) FROM withdrawals w JOIN campaigns c ON w.campaign_id=c.campaign_id JOIN hospitals h ON c.hospital_id=h.hospital_id WHERE h.level='三甲'",
+    "answer": "[(90.56,)]",
+    "status": "ok"
+  },
+  {
+    "question": "筹款进行中的项目有哪些",
+    "sql": "SELECT campaign_id, patient_name, raised_amount FROM campaigns WHERE status='active' LIMIT 10",
+    "answer": "[]",
+    "status": "ok"
+  },
+  {
+    "question": "已经关闭的项目平均筹了多少钱",
+    "sql": "SELECT ROUND(AVG(raised_amount),2) FROM campaigns WHERE status='closed'",
+    "answer": "[(None,)]",
+    "status": "ok"
+  },
+  {
+    "question": "哪个员工业绩最好",
+    "sql": "SELECT s.name, ROUND(SUM(c.raised_amount),2) AS total FROM campaigns c JOIN staff s ON c.staff_id=s.staff_id GROUP BY s.name ORDER BY total DESC LIMIT 1",
+    "answer": "[('胡静', 3078582.47)]",
+    "status": "ok"
+  },
+  {
+    "question": "最近一个月新增了多少筹款项目",
+    "sql": "SELECT COUNT(*) FROM campaigns WHERE created_at >= date('now','-1 month')",
+    "answer": "[(0,)]",
+    "status": "ok"
+  },
+  {
+    "question": "筹款效率最高的团队",
+    "sql": "SELECT t.name, ROUND(AVG(c.raised_amount*100.0/c.target_amount),2) AS rate FROM campaigns c JOIN staff s ON c.staff_id=s.staff_id JOIN teams t ON s.team_id=t.team_id GROUP BY t.name ORDER BY rate DESC LIMIT 1",
+    "answer": "[('长沙3组', 64.35)]",
+    "status": "ok"
+  },
+  {
+    "question": "每个staff的平均筹款金额",
+    "sql": "SELECT s.name, ROUND(AVG(c.raised_amount),2) FROM campaigns c JOIN staff s ON c.staff_id=s.staff_id GROUP BY s.name ORDER BY AVG(c.raised_amount) DESC LIMIT 10",
+    "answer": "[('周军军', 75743.21), ('郭军娜', 75097.13), ('吴明', 73347.6), ('马勇', 73042.47), ('孙勇丽', 70969.08)]",
+    "status": "ok"
+  },
+  {
+    "question": "捐款金额分布情况",
+    "sql": "SELECT CASE WHEN amount<100 THEN '<100' WHEN amount<500 THEN '100-500' WHEN amount<1000 THEN '500-1000' ELSE '>=1000' END AS range, COUNT(*) FROM donations GROUP BY range",
+    "answer": "[('100-500', 114944), ('500-1000', 2493), ('<100', 98609), ('>=1000', 1562)]",
+    "status": "ok"
+  },
+  {
+    "question": "哪个渠道的用户最慷慨",
+    "sql": "SELECT channel, ROUND(AVG(amount),2) AS avg_amount FROM donations GROUP BY channel ORDER BY avg_amount DESC LIMIT 1",
+    "answer": "[('H5', 147.18)]",
+    "status": "ok"
+  },
+  {
+    "question": "项目成功率最高的省份",
+    "sql": "SELECT province, ROUND(SUM(CASE WHEN status='completed' THEN 1 ELSE 0 END)*100.0/COUNT(*),2) AS rate FROM campaigns GROUP BY province ORDER BY rate DESC LIMIT 5",
+    "answer": "[('陕西', 0.0), ('重庆', 0.0), ('福建', 0.0), ('湖南', 0.0), ('湖北', 0.0)]",
+    "status": "ok"
+  },
+  {
+    "question": "老年患者的筹款情况",
+    "sql": "SELECT COUNT(*), ROUND(AVG(raised_amount),2), ROUND(SUM(raised_amount),2) FROM campaigns WHERE age>=60",
+    "answer": "[(1250, 48472.75, 60590936.21)]",
+    "status": "ok"
+  },
+  {
+    "question": "儿童患者有多少",
+    "sql": "SELECT COUNT(*) FROM campaigns WHERE age<=14",
+    "answer": "[(890,)]",
+    "status": "ok"
+  },
+  {
+    "question": "大病项目的筹款情况",
+    "sql": "SELECT d.category, COUNT(*), ROUND(AVG(c.raised_amount),2) FROM campaigns c JOIN diseases d ON c.disease_id=d.disease_id WHERE d.category='重症' GROUP BY d.category",
+    "answer": "[]",
+    "status": "ok"
+  },
+  {
+    "question": "哪个大区表现最好",
+    "sql": "SELECT r.name, ROUND(SUM(c.raised_amount),2) AS total FROM campaigns c JOIN staff s ON c.staff_id=s.staff_id JOIN teams t ON s.team_id=t.team_id JOIN regions r ON t.region_id=r.region_id GROUP BY r.name ORDER BY total DESC LIMIT 1",
+    "answer": "[('西南大区', 60537136.2)]",
+    "status": "ok"
+  },
+  {
+    "question": "捐款最活跃的时间段",
+    "sql": "SELECT strftime('%H', donated_at) AS hour, COUNT(*) AS cnt FROM donations GROUP BY hour ORDER BY cnt DESC LIMIT 5",
+    "answer": "[('00', 217608)]",
+    "status": "ok"
+  },
+  {
+    "question": "最难筹到钱的疾病类型",
+    "sql": "SELECT d.category, ROUND(AVG(c.raised_amount*100.0/c.target_amount),2) AS rate FROM campaigns c JOIN diseases d ON c.disease_id=d.disease_id GROUP BY d.category ORDER BY rate ASC LIMIT 3",
+    "answer": "[('心脑血管', 56.87), ('外伤', 59.18), ('儿童疾病', 59.51)]",
+    "status": "ok"
+  }
+]
